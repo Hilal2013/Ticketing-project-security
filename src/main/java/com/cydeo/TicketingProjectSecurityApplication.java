@@ -18,7 +18,7 @@ public class TicketingProjectSecurityApplication {
         return new ModelMapper();
     }
 @Bean
-    public PasswordEncoder passwordEncoder(){//this is interface we ned one implemantation
+    public PasswordEncoder passwordEncoder(){//this is interface we need one implementation
         return new BCryptPasswordEncoder();//it is taking your password and then putting certain logic
     // and changing encoded structure
 }
