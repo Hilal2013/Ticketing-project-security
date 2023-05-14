@@ -69,7 +69,8 @@ public class SecurityConfig {
 //                .httpBasic()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/welcome")
+               // .defaultSuccessUrl("/welcome")//if Iam manager,I will land another page ifIm admin I will land anonther page
+                .successHandler(authSuccessHandler) //requesting a bean from authenticationSuccessHandler//create configuration for this
                 .failureUrl("/login?error=true")
                 .permitAll()
                 .and()
