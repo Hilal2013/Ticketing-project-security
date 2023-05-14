@@ -38,10 +38,10 @@ public class SecurityConfig {
 return http
         .authorizeRequests()  //whenever we run our security,we need to authorize each pages//we basicly checking each request//needs handling exception
        // .antMatchers("/user/**").hasRole("ADMIN")
-        .antMatchers("/user/**").hasAuthority("ROLE_ADMIN")//in the database we have just admin
-    //    .antMatchers("/project/**").hasRole("MANAGER")
-     //   .antMatchers("/task/employee/**").hasRole("EMPLOYEE")
-     //   .antMatchers("/task/**").hasRole("MANAGER")
+        .antMatchers("/user/**").hasAuthority("Admin")//in the database we have just admin
+         .antMatchers("/project/**").hasAuthority("Manager")
+       .antMatchers("/task/employee/**").hasAuthority("Employee")
+       .antMatchers("/task/**").hasAuthority("Manager")
         //.antMatchers("/task/**").hasAnyRole("EMPLOYEE","ADMIN")
       //  .antMatchers("/task/**").hasAuthority("ROLE_EMPLOYEE")
         .antMatchers("/",

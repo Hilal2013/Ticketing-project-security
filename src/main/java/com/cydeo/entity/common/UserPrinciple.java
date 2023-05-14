@@ -13,7 +13,7 @@ public class UserPrinciple implements UserDetails {
 
     private  User user;
 
-    public UserPrinciple(User user) {//
+    public UserPrinciple(User user) {
     }
 
     @Override
