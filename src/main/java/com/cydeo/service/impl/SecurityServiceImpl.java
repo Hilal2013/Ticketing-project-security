@@ -25,6 +25,6 @@ User user=userRepository.findByUserNameAndIsDeleted(username,false);
             throw new UsernameNotFoundException(username);
         }
 
-        return new UserPrinciple(user);
+        return new UserPrinciple(user);//returning object so wwe need constructor in UserPrincipleClass
     }
 }
