@@ -37,12 +37,13 @@ public class SecurityConfig {
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 return http
         .authorizeRequests()  //whenever we run our security,we need to authorize each pages//we basicly checking each request//needs handling exception
-        .antMatchers("/user/**").hasRole("ADMIN")
-        .antMatchers("/project/**").hasRole("MANAGER")
-        .antMatchers("/task/employee/**").hasRole("EMPLOYEE")
-        .antMatchers("/task/**").hasRole("MANAGER")
+       // .antMatchers("/user/**").hasRole("ADMIN")
+        .antMatchers("/user/**").hasAuthority("ROLE_ADMIN")//in the database we have just admin
+    //    .antMatchers("/project/**").hasRole("MANAGER")
+     //   .antMatchers("/task/employee/**").hasRole("EMPLOYEE")
+     //   .antMatchers("/task/**").hasRole("MANAGER")
         //.antMatchers("/task/**").hasAnyRole("EMPLOYEE","ADMIN")
-      //  .antMatchers("/task/**").hasAuthority("RPLE_EMPLOYEE")
+      //  .antMatchers("/task/**").hasAuthority("ROLE_EMPLOYEE")
         .antMatchers("/",
                 "/login",
                 "/fragments/**",
