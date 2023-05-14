@@ -1,6 +1,7 @@
 package com.cydeo.service.impl;
 
 import com.cydeo.entity.User;
+import com.cydeo.entity.common.UserPrinciple;
 import com.cydeo.repository.UserRepository;
 import com.cydeo.service.SecurityService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +21,10 @@ public class SecurityServiceImpl implements SecurityService {
         //get the user from db (this is business->go to repository) and convert to user springs understands by using UserPrincipal
 User user=userRepository.findByUserNameAndIsDeleted(username,false);
 //I need to authenticate this user
-        return null;
+        if(user==null){
+            throw new UsernameNotFoundException(username);
+        }
+
+        return new UserPrinciple(user);
     }
 }
