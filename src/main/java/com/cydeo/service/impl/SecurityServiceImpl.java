@@ -1,7 +1,7 @@
 package com.cydeo.service.impl;
 
 import com.cydeo.entity.User;
-import com.cydeo.entity.common.UserPrinciple;
+import com.cydeo.entity.common.UserPrincipal;
 import com.cydeo.repository.UserRepository;
 import com.cydeo.service.SecurityService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +25,6 @@ User user=userRepository.findByUserNameAndIsDeleted(username,false);
             throw new UsernameNotFoundException(username);
         }
 
-        return new UserPrinciple(user);//returning object so wwe need constructor in UserPrincipleClass
+        return new UserPrincipal(user);//returning object so wwe need constructor in UserPrincipleClass
     }
 }
