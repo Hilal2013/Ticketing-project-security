@@ -11,24 +11,27 @@ import java.util.List;
 
 public class UserPrincipal implements UserDetails {
 
-    private  User user;
+    private User user;
 
     public UserPrincipal(User user) {
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorityList=new ArrayList<>();
-        GrantedAuthority authority=new SimpleGrantedAuthority(this.user.getRole().getDescription());
+
+        List<GrantedAuthority> authorityList = new ArrayList<>();
+
+        GrantedAuthority authority = new SimpleGrantedAuthority(this.user.getRole().getDescription());
+
         authorityList.add(authority);
+
         return authorityList;
     }
 
     @Override
-    public String getPassword() {//get the password from databsae set it to Spring security//actually we are mapping
-       // How Im gonna set it?How i can access to password field of the user
-
-        return this.user.getPassWord();
+    public String getPassword() {
+        return this.user.getPassWord();   //how i can acccess to password field of the user object
     }
 
     @Override
@@ -56,9 +59,10 @@ public class UserPrincipal implements UserDetails {
         return this.user.isEnabled();
     }
 
-
     public Long getId(){
         return this.user.getId();
     }
+
+
 
 }
