@@ -52,6 +52,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(UserDTO user) {//user is coming UI
+      //for enabled field
+      user.setEnabled(true);
+
 //Before saving I need to encode password
         User obj=userMapper.convertToEntity(user);
         obj.setPassWord(passwordEncoder.encode(obj.getPassWord()));
