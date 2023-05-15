@@ -13,6 +13,7 @@ import com.cydeo.service.TaskService;
 import com.cydeo.service.UserService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -100,9 +101,10 @@ public class ProjectServiceImpl implements ProjectService {
     }
     @Override
     public List<ProjectDTO> listAllProjectDetails() {
-        //we need to get manager and I need to go tadabase bring assigned projects to manager with infos
-//now it is coming UI not service//this portion is login who logged in //hard code
-        UserDTO currentUserDTO = userService.findByUserName("harold@manager.com");
+
+        String username= SecurityContextHolder.getContext().getAuthentication().getName();
+        //whoever logged in app
+        UserDTO currentUserDTO = userService.findByUserName("username");
         // I need to go to database
         User userManager = userMapper.convertToEntity(currentUserDTO);
 //hey Db give me all projects assigned to manager login in the system//I need all project belongs to this user
