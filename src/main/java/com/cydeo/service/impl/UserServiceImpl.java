@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(UserDTO user) {//user is coming UI
       //for enabled field
-      user.setEnabled(true);
+      user.setEnabled(true);//my entity has boolean enabled false
 
 //Before saving I need to encode password
         User obj=userMapper.convertToEntity(user);
